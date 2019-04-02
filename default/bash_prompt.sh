@@ -1,11 +1,4 @@
-# GIT
-
-if [ -f `brew --prefix`/etc/bash_completion ]; then
-    . `brew --prefix`/etc/bash_completion
-fi
-
 # PS1
-
 RESET="\[\017\]"
 NORMAL="\[\033[0m\]"
 RED="\[\033[31;1m\]"
