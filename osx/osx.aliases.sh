@@ -29,3 +29,11 @@ alias showdesktop="defaults write com.apple.finder CreateDesktop -bool true && k
 
 # PlistBuddy alias, because sometimes `defaults` just doesn’t cut it
 alias plistbuddy="/usr/libexec/PlistBuddy"
+
+# Flush Directory Service cache
+alias flush="dscacheutil -flushcache"
+alias dnsflush="sudo killall -HUP mDNSResponder"
+alias flushdns="sudo killall -HUP mDNSResponder"
+
+# Recursively delete `.DS_Store` files
+alias cleanup="find . -name '*.DS_Store' -type f -ls -delete"

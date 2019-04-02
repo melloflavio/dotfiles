@@ -50,11 +50,6 @@ alias ips="ifconfig -a | perl -nle'/(\d+\.\d+\.\d+\.\d+)/ && print $1'"
 # Enhanced WHOIS lookups
 alias whois="whois -h whois-servers.net"
 
-# Flush Directory Service cache
-alias flush="dscacheutil -flushcache"
-alias dnsflush="sudo killall -HUP mDNSResponder"
-alias flushdns="sudo killall -HUP mDNSResponder"
-
 # View HTTP traffic
 alias sniff="sudo ngrep -d 'en1' -t '^(GET|POST) ' 'tcp and port 80'"
 alias httpdump="sudo tcpdump -i en1 -n -s 0 -w - | grep -a -o -E \"Host\: .*|GET \/.*\""
