@@ -13,7 +13,7 @@
 COLORTOOL_PATH="/mnt/c/Program\ Files/ColorTool/ColorTool.exe"
 
 # -b => applies colorscheme to defaults, -x => applies to current wsl terminal
-COLORTOOL_ARGS="-x"
+COLORTOOL_ARGS="-x -q"
 
 COLOR_SCHEMES=(
     'Arthur'
