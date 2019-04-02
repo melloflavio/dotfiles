@@ -5,3 +5,6 @@ bind '"\e[A": history-search-backward'
 bind '"\e[B": history-search-forward'
 bind '"\eOA": history-search-backward'
 bind '"\eOB": history-search-forward'
+
+# Ignores cases in autocomplete (TAB)
+bind "set completion-ignore-case on"
