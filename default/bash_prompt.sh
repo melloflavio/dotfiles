@@ -8,4 +8,4 @@ SELECT="if [ \$? = 0 ]; then echo \"${YELLOW}\"; else echo \"${RED}\"; fi"
 
 
 #export PS1="\w \[\033[0;33m\]$(__git_ps1) \[\033[0m\] >$ "
-export PS1="${RESET} \`${SELECT}\`\w ${WHITE}\$(__git_ps1) ${NORMAL}\$ "
+# export PS1="${RESET} \`${SELECT}\`\w ${WHITE}\$(__git_ps1) ${NORMAL}\$ "
