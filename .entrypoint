@@ -1,5 +1,5 @@
 # Load files
-for file in ~/bash-dotfiles/**/*.sh; do
+for file in  $(find ~/bash-dotfiles -name *.sh); do
   [ -r "$file" ] && source "$file"
 done
 unset file
