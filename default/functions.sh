@@ -1,27 +1,7 @@
-# BEGIN MARKS #
-# http://jeroenjanssens.com/2013/08/16/quickly-navigate-your-filesystem-from-the-command-line.html
-
-export MARKPATH=$HOME/.marks
-function jump {
-    cd -P $MARKPATH/$1 2>/dev/null || echo "No such mark: $1"
-}
-function mark {
-    mkdir -p $MARKPATH; ln -s $(pwd) $MARKPATH/$1
-}
-function unmark {
-    rm -i $MARKPATH/$1
-}
-function marks {
-    \ls -l "$MARKPATH" | tail -n +2 | sed 's/  / /g' | cut -d' ' -f9- | awk -F ' -> ' '{printf "%-10s -> %s\n", $1, $2}'
-}
-# END MARKS #
-
-
 # Create a new directory and enter it
 function md() {
   mkdir -p "$@" && cd "$@"
 }
-
 
 # find shorthand
 function f() {
@@ -37,20 +17,6 @@ function server() {
 	# And serve everything as UTF-8 (although not technically correct, this doesn’t break anything for binary files)
 	python -c $'import SimpleHTTPServer;\nmap = SimpleHTTPServer.SimpleHTTPRequestHandler.extensions_map;\nmap[""] = "text/plain";\nfor key, value in map.items():\n\tmap[key] = value + ";charset=UTF-8";\nSimpleHTTPServer.test();' "$port"
 }
-
-# git log with per-commit cmd-clickable GitHub URLs (iTerm)
-function gf() {
-  local remote="$(git remote -v | awk '/^origin.*\(push\)$/ {print $2}')"
-  [[ "$remote" ]] || return
-  local user_repo="$(echo "$remote" | perl -pe 's/.*://;s/\.git$//')"
-  git log $* --name-status --color | awk "$(cat <<AWK
-    /^.*commit [0-9a-f]{40}/ {sha=substr(\$2,1,7)}
-    /^[MA]\t/ {printf "%s\thttps://github.com/$user_repo/blob/%s/%s\n", \$1, sha, \$2; next}
-    /.*/ {print \$0}
-AWK
-  )" | less -F
-}
-
 
 # Copy w/ progress
 cp_p () {
@@ -80,12 +46,6 @@ function prunedir () {
    find $* -type d -empty -print0 | xargs -0r rmdir -p ;
 }
 
-# take this repo and copy it to somewhere else minus the .git stuff.
-function gitexport(){
-	mkdir -p "$1"
-	git archive master | tar -x -C "$1"
-}
-
 # get gzipped size
 function gz() {
 	echo "orig size    (bytes): "
@@ -113,103 +73,4 @@ function escape() {
 function unidecode() {
 	perl -e "binmode(STDOUT, ':utf8'); print \"$@\""
 	echo # newline
-}
-
-
-
-# Launch installed browsers for a specific URL
-# Usage: browsers "http://www.google.com"
-function browsers(){
-	chrome $1
-	opera $1
-	firefox $1
-	safari $1
-}
-
-function showmerge(){
-	if [ $2 ]
-	then
-		git logm $1 | grep "Merge branch '$2'"
-	else
-		git logm | grep "Merge branch '$1'"
-	fi
-
-}
-
-# Browserstack shortcuts, now with added hotness thanks to the Browserstack team.
-# Note, a trial or paid for account is needed for this to work
-# Usage: ipad3 "http://www.google.com", win7ie8 "http://www.google.com" etc.
-
-# For local server running on port 3000, use like this
-# Usage: ipad3 "http://localhost:3000" "localhost,3000,0", win7ie8 "http://localhost:3000" "localhost,3000,0" etc.
-
-# For local server running on apache with ssl as staging.example.com and https://staging.example.com
-# Usage: ipad3 "http://staging.example.com" "staging.example.com,80,0,staging.example.com,443,1", win7ie8 "http://staging.example.com" "staging.example.com,80,0,staging.example.com,443,1" etc.
-
-function openurl(){
-	if [ $2 ]
-	then
-	  url=$1"&host_ports=$2"
-	fi
-	open -a google\ chrome ${url}
-}
-
-function androidnexus(){
-	local url="http://www.browserstack.com/start#os=android&os_version=4.0.3&device=Samsung+Galaxy+Nexus&zoom_to_fit=true&url=$1&start=true"
-	openurl $url $2
-}
-
-function ipad3(){
-	local url="http://www.browserstack.com/start#os=ios&os_version=5.1&device=iPad+3rd&zoom_to_fit=true&resolution=1024x768&speed=1&url=$1&start=true"
-	openurl $url $2
-}
-
-function ipad3ios6(){
-	local url="http://www.browserstack.com/start#os=ios&os_version=6.1&device=iPad+3rd&zoom_to_fit=true&resolution=1024x768&speed=1&url=$1&start=true"
-	openurl $url $2
-}
-
-function ipad2(){
-	local url="http://www.browserstack.com/start#os=ios&os_version=5.1&device=iPad+2nd&zoom_to_fit=true&resolution=1024x768&speed=1&url=$1&start=true"
-	openurl $url $2
-}
-
-function win7ie8(){
-	local url="http://www.browserstack.com/start#os=Windows&os_version=7&browser=IE&browser_version=8.0&zoom_to_fit=true&resolution=1024x768&speed=1&url=$1&start=true"
-	openurl $url $2
-}
-
-function win7ie9(){
-	local url="http://www.browserstack.com/start#os=Windows&os_version=7&browser=IE&browser_version=9.0&zoom_to_fit=true&resolution=1024x768&speed=1&url=$1&start=true"
-	openurl $url $2
-}
-
-function win8ie10(){
-	local url="http://www.browserstack.com/start#os=Windows&os_version=8&browser=IE&browser_version=10.0&zoom_to_fit=true&resolution=1024x768&speed=1&url=$1&start=true"
-	openurl $url $2
-}
-
-function winxpie8(){
-	local url="http://www.browserstack.com/start#os=Windows&os_version=XP&browser=IE&browser_version=8.0&zoom_to_fit=true&resolution=1024x768&speed=1&url=$1&start=true"
-	openurl $url $2
-}
-
-function winxpie7(){
-	local url="http://www.browserstack.com/start#os=Windows&os_version=XP&browser=IE&browser_version=7.0&zoom_to_fit=true&resolution=1024x768&speed=1&url=$1&start=true"
-	openurl $url $2
-}
-
-function winxpie6(){
-	local url="http://www.browserstack.com/start#os=Windows&os_version=XP&browser=IE&browser_version=6.0&zoom_to_fit=true&resolution=1024x768&speed=1&url=$1&start=true"
-	openurl $url $2
-}
-
-function win7chrome(){
-	local url="http://www.browserstack.com/start#os=Windows&os_version=7&browser=Chrome&browser_version=21.0&zoom_to_fit=true&resolution=1024x768&speed=1&url=$1&start=true"
-	openurl $url $2
-}
-
-function win7ff(){
-	local url="http://www.browserstack.com/start#os=Windows&os_version=7&browser=Firefox&browser_version=16.0&zoom_to_fit=true&resolution=1024x768&speed=1&url=$1&start=true"
-	openurl $url $2
 }
