@@ -1,8 +1,5 @@
 # Load files
-for file in ~/bash-dotfiles/.{bash_prompt,exports,aliases,functions}; do
+for file in ~/bash-dotfiles/*.sh; do
   [ -r "$file" ] && source "$file"
 done
 unset file
-
-
-# RVM, NVM and other stuff goes here...
