@@ -9,28 +9,6 @@ alias .....="cd ../../../.."
 alias ~="cd ~" # `cd` is probably faster to type though
 alias -- -="cd -"
 
-# programs
-alias st='open -a "Sublime Text 2"'
-# also/or do this:
-# ln -s "/Applications/Sublime Text 2.app/Contents/SharedSupport/bin/subl" ~/bin/subl
-alias preview="open -a '$PREVIEW'"
-alias xcode="open -a '/Applications/Xcode.app'"
-alias filemerge="open -a '/Developer/Applications/Utilities/FileMerge.app'"
-alias safari="open -a safari"
-alias firefox="open -a firefox"
-alias opera="open -a opera"
-alias chrome="open -a google\ chrome"
-alias chromium="open -a chromium"
-alias dashcode="open -a dashcode"
-alias f='open -a Finder'
-
-
-# general shortcuts
-alias pro="cd ~/projetos"
-# removed due to http://nodegh.io/
-# alias gh="open -a google\ chrome 'http://github.com/felipesabino'"
-alias bl="open -a google\ chrome 'http://browserling.com'"
-
 # be nice
 alias please=sudo
 
@@ -43,10 +21,6 @@ if ls --color > /dev/null 2>&1; then # GNU `ls`
 else # OS X `ls`
   colorflag="-G"
 fi
-
-#sound reset
-
-alias resetsound="sudo kill -9 `ps ax|grep 'coreaudio[a-z]' |awk '{print $1}'`"
 
 # List all files colorized in long format
 alias l="ls -l ${colorflag}"
@@ -67,14 +41,6 @@ fi
 
 # GIT STUFF
 
-# Undo a `git push`
-alias undopush="git push -f origin HEAD^:master"
-alias apply-gitignore="git ls-files -ci --exclude-standard -z | xargs -0 git rm --cached"
-alias gitk='gitk 2>/dev/null'
-
-# git root
-alias gr='[ ! -z `git rev-parse --show-cdup` ] && cd `git rev-parse --show-cdup || pwd`'
-
 # IP addresses
 alias ip="dig +short myip.opendns.com @resolver1.opendns.com"
 alias localip="ipconfig getifaddr en1"
@@ -93,9 +59,6 @@ alias flushdns="sudo killall -HUP mDNSResponder"
 alias sniff="sudo ngrep -d 'en1' -t '^(GET|POST) ' 'tcp and port 80'"
 alias httpdump="sudo tcpdump -i en1 -n -s 0 -w - | grep -a -o -E \"Host\: .*|GET \/.*\""
 
-# OS X has no `md5sum`, so use `md5` as a fallback
-type -t md5sum > /dev/null || alias md5sum="md5"
-
 # Trim new lines and copy to clipboard
 alias c="tr -d '\n' | pbcopy"
 
@@ -113,27 +76,7 @@ alias fs="stat -f \"%z bytes\""
 # ROT13-encode text. Works for decoding, too! ;)
 alias rot13='tr a-zA-Z n-za-mN-ZA-M'
 
-# Empty the Trash on all mounted volumes and the main HDD
-alias emptytrash="sudo rm -rfv /Volumes/*/.Trashes 2> /dev/null ; rm -rfv ~/.Trash 2> /dev/null"
-alias emptyderived="sudo rm -rvf ~/Library/Developer/Xcode/DerivedData/* 2> /dev/null"
-
-# Hide/show all desktop icons (useful when presenting)
-alias hidedesktop="defaults write com.apple.finder CreateDesktop -bool false && killall Finder"
-alias showdesktop="defaults write com.apple.finder CreateDesktop -bool true && killall Finder"
-
-# PlistBuddy alias, because sometimes `defaults` just doesn’t cut it
-alias plistbuddy="/usr/libexec/PlistBuddy"
-
 # One of @janmoesen’s ProTip™s
 for method in GET HEAD POST PUT DELETE TRACE OPTIONS; do
   alias "$method"="lwp-request -m '$method'"
 done
-
-# Stuff I never really use but cannot delete either because of http://xkcd.com/530/
-alias stfu="osascript -e 'set volume output muted true'"
-alias pumpitup="osascript -e 'set volume 10'"
-alias hax="growlnotify -a 'Activity Monitor' 'System error' -m 'WTF R U DOIN'"
-
-
-# HAHA
-alias ny='telnet nyan.howes.net.nz'
