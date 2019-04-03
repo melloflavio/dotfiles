@@ -31,3 +31,5 @@ for file in $files; do
   ln -s $dir/$file ~/.$file
 done
 
+# Add timestamp of last update to a file for easy tracking
+date +'%Y/%m/%d - %H:%M:%S' > last_updated.txt
