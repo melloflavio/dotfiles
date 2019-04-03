@@ -48,7 +48,17 @@ COLOR_SCHEMES=(
 
 SCHEME_LIST_SIZE=${#COLOR_SCHEMES[@]}
 
+# Command used to force new color if the randomized one is undesired
+function termcolor {
+    if [ $1 ]
+    then
+        COLOR_NAME=$1
+    else
+        COLOR_INDEX=$(($RANDOM % $SCHEME_LIST_SIZE))
+        COLOR_NAME=${COLOR_SCHEMES[$COLOR_INDEX]}
+    fi
 
-COLOR_INDEX=$(($RANDOM % $SCHEME_LIST_SIZE))
+    eval "$COLORTOOL_PATH $COLORTOOL_ARGS $COLOR_NAME"
+}
 
-eval "$COLORTOOL_PATH $COLORTOOL_ARGS ${COLOR_SCHEMES[$COLOR_INDEX]}"
+termcolor
