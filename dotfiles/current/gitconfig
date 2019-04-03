@@ -1,0 +1,16 @@
+[credential]
+[user]
+	email = flaviorafmello@gmail.com
+	name = Flavio Mello
+
+[core]
+	editor = code --wait
+	autocrlf = true
+[merge]
+    tool = vscode
+[mergetool "vscode"]
+    cmd = code --wait $MERGED
+[diff]
+    tool = vscode
+[difftool "vscode"]
+    cmd = code --wait --diff $LOCAL $REMOTE
