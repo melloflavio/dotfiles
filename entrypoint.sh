@@ -21,7 +21,7 @@ if [ "$SHELL_DOTFILE_SHELL" = "bash" ] ; then
     for file in ~/bash-dotfiles/bash/*.sh; do
         [ -r "$file" ] && source "$file"
     done
-elif [ "$SHELL_DOTFILE_SHELL" = "bash" ] ; then
+elif [ "$SHELL_DOTFILE_SHELL" = "zsh" ] ; then
     for file in ~/bash-dotfiles/zsh/*.sh; do
         [ -r "$file" ] && source "$file"
     done
