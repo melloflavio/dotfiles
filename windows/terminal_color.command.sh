@@ -26,7 +26,6 @@ COLOR_SCHEMES=(
     'CrayonPonyFish'
     'DotGov'
     'Earthsong'
-    'Elemental'
     'Fideloper'
     'FrontEndDelight'
     'Grass'
