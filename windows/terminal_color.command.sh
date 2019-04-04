@@ -16,7 +16,6 @@ COLORTOOL_PATH="/mnt/c/Program\ Files/ColorTool/ColorTool.exe"
 COLORTOOL_ARGS="-x -q"
 
 COLOR_SCHEMES=(
-    'Arthur'
     'AtelierSulphurpool'
     'ayu'
     'Belafonte\ Night'
