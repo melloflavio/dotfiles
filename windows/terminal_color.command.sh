@@ -19,7 +19,7 @@ COLOR_SCHEMES=(
     'AtelierSulphurpool'
     'ayu'
     'Belafonte\ Night'
-    'Calamity'
+ #   'Calamity'
     'Chalk'
     'Cobalt\ Neon'
     'CrayonPonyFish'
