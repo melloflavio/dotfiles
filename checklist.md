@@ -12,6 +12,8 @@ Other packages that need to be installed. But still not automated:
 
 ### Python
 
+- pyenv => Python version manager (much like rvm)
+- pipenv => package version management through config files like npm/rvm
 - pip => `sudo apt install python3-pip`
 - `virtualenv`
 - [Anaconda](https://docs.anaconda.com/anaconda/install/linux/)
