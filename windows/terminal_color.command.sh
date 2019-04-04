@@ -37,7 +37,7 @@ COLOR_SCHEMES=(
     'Misterioso'
     'N0tch2k'
     'OneHalfDark'
-    'Red Planet'
+    'Red\ Planet'
     'Relaxed'
     'solarized_dark'
     'Sundried'
