@@ -27,3 +27,8 @@ elif [ "$SHELL_DOTFILE_SHELL" = "zsh" ] ; then
     done
 fi
 unset file
+
+# Finish pyenv setup.
+# Affects $PATH
+# KEEP NEAR END
+source ~/bash-dotfiles/default/pyenv.config.extended

@@ -1,0 +1,8 @@
+# Additional config command for pyenv. 
+# Needs to be run in to latter part of config file, per pyenv intallation instructions
+# Keep file without .sh extension otherwise entrypoint will eval it 
+# toghether with others
+
+if command -v pyenv 1>/dev/null 2>&1; then
+  eval "$(pyenv init -)"
+fi
