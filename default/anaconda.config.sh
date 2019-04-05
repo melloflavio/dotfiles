@@ -1,6 +1,6 @@
-# Anaconda setup code. 
+# Anaconda setup code.
 # Originally inserted automatically into ~/.bashrc
-# 
+#
 # added by Anaconda3 2018.12 installer
 # >>> conda init >>>
 # !! Contents within this block are managed by 'conda init' !!
@@ -16,4 +16,3 @@ else
   fi
 fi
 unset __conda_setup
-
