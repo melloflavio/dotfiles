@@ -17,11 +17,11 @@ COLORTOOL_ARGS="-x -q"
 
 COLOR_SCHEMES=(
     'AtelierSulphurpool'
-    'ayu'
+    # 'ayu'
     'Belafonte\ Night'
  #   'Calamity'
     'Chalk'
-    'Cobalt\ Neon'
+    # 'Cobalt\ Neon'
     'CrayonPonyFish'
     'DotGov'
     'Earthsong'
@@ -35,7 +35,7 @@ COLOR_SCHEMES=(
     'Misterioso'
     'N0tch2k'
     'OneHalfDark'
-    'Red\ Planet'
+    # 'Red\ Planet'
     'Relaxed'
     'solarized_dark'
     'Sundried'
