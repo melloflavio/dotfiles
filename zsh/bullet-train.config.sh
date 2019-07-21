@@ -8,13 +8,13 @@ BULLETTRAIN_PROMPT_ORDER=(
     # context
     dir
     screen
-    perl
-    ruby
-    virtualenv
-    nvm
+    # perl
+    # ruby
+    # virtualenv
+    # nvm
     aws
-    go
-    rust
+    # go
+    # rust
     elixir
     git
     hg
